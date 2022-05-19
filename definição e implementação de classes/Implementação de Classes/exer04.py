@@ -1,28 +1,56 @@
 '''
-Exercício 04 
-
-Nome da Classe:
-Aluno
-
+Nome da classe
+    Aluno
 Atributos:
     ra
     nome
     turma
-    notas: lista de notas do aluno. Deve ser inicializada
-    no construtor como uma lista vazia.
-
+    notas (lista que deve ser inicializada como vazia)
 Métodos:
-    __init__(self, ra, nome, turma): Método construtor. 
-inserir_nota(self, nota):
-Deve verificar se a nota informada é valida (de 0 à 10).
-Se for válida, deve inserir a nota na lista de notas do aluno.
-Caso contrário deve exibir uma mensagem de nota inválida.
-    calcular_media(self):
-Calcula e retorna a média aritmética das notas do alunos.
+    __init__(self, ra, nome, turma)
+    inserir_nota(self, nota)
+    calcular_media(self)
 
-    No programa principal:
-Crie três objeto da classe Aluno
-Insira algumas notas para cada aluno.
+Crie 3 objetos da classe aluno. Insira algumas notas para os alunos.
 Insira os objetos em uma lista.
-Percorra a lista de alunos e exiba a média de cada aluno.
+Percorra a lista, calcule e exiba a média aritmética de cada aluno.
 '''
+
+
+class Aluno:
+    def __init__(self, ra, nome, turma):
+        self.ra = ra
+        self.nome = nome
+        self.turma = turma
+        self.notas = []
+
+    def inserir_nota(self, nota):
+        if nota >= 0 and nota <= 10:
+            self.notas.append(nota)
+        else:
+            print('Nota inválida')
+
+    def calcular_media(self):
+        return sum(self.notas) / len(self.notas)
+
+
+# cria tres objetos
+aluno1 = Aluno(1234567, 'Paulo', 'SI2A')
+aluno2 = Aluno(5678789, 'Maria', 'SI2A')
+aluno3 = Aluno(5555666, 'João', 'SI2A')
+
+# insere as notas dos alunos
+aluno1.inserir_nota(9)
+aluno1.inserir_nota(6)
+
+aluno2.inserir_nota(8)
+aluno2.inserir_nota(7)
+
+aluno3.inserir_nota(9.5)
+
+# insere alunos em uma lista
+lista = [aluno1, aluno2, aluno3]
+
+# percorre a lista de alunos
+for x in lista:
+    print(x.nome, x.calcular_media())   # calcula media
